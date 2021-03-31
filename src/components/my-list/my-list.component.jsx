@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import React, { Component } from 'react'
 
 import ListStore from '../../stores/list-store'
@@ -32,4 +33,4 @@ class MyList extends Component {
     }
 }
 
-export default MyList 
+export default observer(MyList) 
