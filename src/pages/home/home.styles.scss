@@ -1,0 +1,27 @@
+.home-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+
+    .your-details {
+        width: 400px;
+        justify-self: center;
+        display: inline-grid;
+    }
+
+    .my-list {
+        width: 400px;
+        justify-self: center;
+    }
+}
+
+@media (min-width: 300px) {
+    .home-grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+@media (min-width: 900px) {
+    .home-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
