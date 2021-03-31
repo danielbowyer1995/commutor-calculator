@@ -17,14 +17,15 @@ class MyList extends Component {
         console.log(this.state.locations)
         return(
             <div>
-                {this.state.locations.map((location) => 
-                    <TravelSummary 
-                        key={location.id}
-                        trainTime={location.trainTime}
-                        trainCost={location.trainCost}
-                        carTime={location.carTime}
-                        carCost={location.carTime}
-                    />
+                {this.state.locations.map((location, i) => 
+                    <div key={`myList${i}`}>
+                        <TravelSummary 
+                            trainTime={location.trainTime}
+                            trainCost={location.trainCost}
+                            carTime={location.carTime}
+                            carCost={location.carTime}
+                        />
+                    </div>
                 )}
             </div>
         )

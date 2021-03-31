@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import { observer } from 'mobx-react'
 
 import './home.styles.scss'
 
 import ListStore from '../../stores/list-store'
+import FormStore from '../../stores/form-store'
 
 import InputForm from '../../components/input-form/input-form.component'
 import TravelDetails from '../../components/travel-details/travel-details.component'
 import MyList from '../../components/my-list/my-list.component'
+
 
 class Home extends Component {
     constructor(){
@@ -22,9 +25,8 @@ class Home extends Component {
             }
         }
     }
-
+    
     render(){
-        
         return(
             <div>
                 <h1>Commuter Calculator</h1>
@@ -34,7 +36,7 @@ class Home extends Component {
                     <InputForm />
                     <TravelDetails 
                         trainTime={this.state.travelDetails.trainTime}
-                        trainCost={this.state.travelDetails.trainCost}
+                        trainCost={FormStore.dailyTrainSpend}
                         carTime={this.state.travelDetails.carTime}
                         carCost={this.state.travelDetails.carTime}
                     />
@@ -52,4 +54,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default observer(Home)

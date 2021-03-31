@@ -1,7 +1,7 @@
 import { observable } from 'mobx'
 
 const FormStore = observable({
-    dailyTrainSpend: 0,
+    dailyTrainSpend: '',
     dailyTrainTime: 0,
     dailyCarSpend: 0,
     dailyCarTime: 0,

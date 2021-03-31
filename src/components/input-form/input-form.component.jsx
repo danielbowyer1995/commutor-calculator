@@ -1,49 +1,54 @@
+import { observer } from 'mobx-react';
 import React, { Component } from 'react'
 
 import FormStore from '../../stores/form-store'
 
 import './input-form.styles.scss'
 
+// @observer
 class InputForm extends Component {
-    constructor(props){
-        super(props);
 
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+    constructor(){
+        super();
+
+        this.state = {
+            dailyTrainSpend: 0,
+            dailyTrainTime: 0,
+            dailyCarSpend: 0,
+            dailyCarTime: 0,
+            destinationPostCode: '',
+            homePostCode: '',
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    
+    handleChange(event) {
+        let input = event.target.value;
+        FormStore.dailyCarSpend = input
+        console.log(FormStore.dailyCarSpend)
     }
 
-    handleChange = event => {
-        const {value, name} = event.target
-        FormStore[name] = value
+    handleSubmit(event) {
+        alert('A name was submitted');
+        event.preventDefault();
     }
-
-    handleSubmit = async event => {
-        event.preventDefault()
-    }
+    
 
     render(){
         return(
             <div className='input-form'>
                 <form className='form-fields' onSubmit={this.handleSubmit}>
-                    <label>
-                        Daily Travel Spend Budget
-                        <input 
-                            type='number' 
-                            name='dailyTrainSpend'
-                            value={FormStore.dailyTrainSpend}
-                            onChange={this.handleChange}
-                            label='DAILY TRAVEL SPEND'
-                            required
-                        />
-                    </label>
-                    
-                    <span>Daily travel time budget</span>
-                    <input type='text' name='daily time' />
-                    <span>Destination postcode</span>
-                    <input type='text' name='destination postcode' />
-                    <span>New home postcode</span>
-                    <input type='text' name='home postcode' />
-                    <br />
+                    <label>Daily Travel Spend Budget</label>
+                    <input 
+                        type='search' 
+                        name='dailyTrainSpend'
+                        value={this.input}
+                        onChange={this.handleChange}
+                        label='DAILY TRAVEL SPEND'
+                        required
+                    />
                     <input type='submit' value='submit' />
                 </form>
             </div>
@@ -51,4 +56,11 @@ class InputForm extends Component {
     }
 }
 
-export default InputForm
+export default observer(InputForm)
+
+// dailyTrainSpend: 0,
+// dailyTrainTime: 0,
+// dailyCarSpend: 0,
+// dailyCarTime: 0,
+// destinationPostCode: '',
+// homePostCode: '',

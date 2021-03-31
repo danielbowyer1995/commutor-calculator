@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react'
 import React from 'react'
 
 import './travel-details.styles.scss'
@@ -38,4 +39,4 @@ const TravelDetails = (props) => {
 //     }
 // }
 
-export default TravelDetails
+export default observer(TravelDetails)
