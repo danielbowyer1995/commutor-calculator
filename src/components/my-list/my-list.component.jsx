@@ -21,10 +21,10 @@ class MyList extends Component {
                 {this.state.locations.map((location, i) => 
                     <div key={`myList${i}`}>
                         <TravelSummary 
-                            trainTime={location.trainTime}
-                            trainCost={location.trainCost}
-                            carTime={location.carTime}
-                            carCost={location.carTime}
+                            trainTime={location.dailyTrainTime}
+                            trainCost={location.dailyTrainSpend}
+                            carTime={location.dailyCarTime}
+                            carCost={location.dailyCarSpend}
                         />
                     </div>
                 )}
@@ -34,3 +34,10 @@ class MyList extends Component {
 }
 
 export default observer(MyList) 
+
+// : 0,
+//         : 0,
+//         : 0,
+//         : 0,
+//         destinationPostCode: '',
+//         homePostCode: '',

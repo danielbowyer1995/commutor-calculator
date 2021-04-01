@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
+import { action } from 'mobx'
 
 import './home.styles.scss'
 
@@ -12,18 +13,22 @@ import MyList from '../../components/my-list/my-list.component'
 
 
 class Home extends Component {
-    constructor(){
-        super()
+    // constructor(){
+    //     super()
 
-        this.state = {
-            travelDetails: {
-                trainTime: 5,
-                trainCost: 5,
-                carTime: 30,
-                carCost: 10,
-                homePostcode: 'BR14DQ',
-            }
-        }
+    //     this.state = {
+    //         travelDetails: {
+    //             trainTime: 5,
+    //             trainCost: 5,
+    //             carTime: 30,
+    //             carCost: 10,
+    //             homePostcode: 'BR14DQ',
+    //         }
+    //     }
+    // }
+
+    pushToMyList(){
+        ListStore.myList.push(FormStore.travelDetails) 
     }
     
     render(){
@@ -35,13 +40,17 @@ class Home extends Component {
                     <h1>Your Details</h1>
                     <InputForm />
                     <TravelDetails 
-                        trainTime={this.state.travelDetails.trainTime}
-                        trainCost={FormStore.dailyTrainSpend}
-                        carTime={this.state.travelDetails.carTime}
-                        carCost={this.state.travelDetails.carTime}
+                        trainTime={FormStore.travelDetails.dailyTrainTime}
+                        trainCost={FormStore.travelDetails.dailyTrainSpend}
+                        carTime={FormStore.travelDetails.dailyCarTime}
+                        carCost={FormStore.travelDetails.dailyCarSpend}
                     />
                     {/* eslint-disable-next-line */}
-                    <button onClick={ListStore.myList.push(this.state.travelDetails), () => console.log(ListStore.myList)}>Add to my list</button>
+                    {
+                        !FormStore.show ? null
+                        :
+                        <button onClick={action(this.pushToMyList, () => console.log(ListStore.myList))}>Add to my list</button>
+                    }
                 </div>
                 <div className='my-list'>
                     <h1>My List</h1>

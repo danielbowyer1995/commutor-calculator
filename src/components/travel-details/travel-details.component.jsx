@@ -1,17 +1,24 @@
 import { observer } from 'mobx-react'
 import React from 'react'
+import FormStore from '../../stores/form-store'
 
 import './travel-details.styles.scss'
 
 const TravelDetails = (props) => {
     return(
-        <div className='location-details'>
-            <h3>Location: {props.homePostcode}</h3>
-            <span className='option'>Train travel time: {props.trainTime} mins</span>
-            <span className='option'>Train travel cost: £{props.trainCost}</span>
-            <span className='option'>Car travel time: {props.carTime} mins</span>
-            <span className='option'>Car travel cost: £{props.carCost}</span>
-            {/* <button>Add to list</button> */}
+        <div>
+            {
+                !FormStore.show ? null
+                :
+                <div className='location-details'>
+                    <h3>Location: {props.homePostcode}</h3>
+                    <span className='option'>Train travel time: {props.trainTime} mins</span>
+                    <span className='option'>Train travel cost: £{props.trainCost}</span>
+                    <span className='option'>Car travel time: {props.carTime} mins</span>
+                    <span className='option'>Car travel cost: £{props.carCost}</span>
+                    {/* <button>Add to list</button> */}
+                </div>
+            }
         </div>
     )
 }
