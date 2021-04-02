@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react'
 import React from 'react'
-import FormStore from '../../stores/form-store'
+import TravelStore from '../../stores/travel.store'
+
 
 import './travel-details.styles.scss'
 
@@ -8,10 +9,10 @@ const TravelDetails = (props) => {
     return(
         <div>
             {
-                !FormStore.show ? null
+                !TravelStore.show ? null
                 :
                 <div className='location-details'>
-                    <h3>Location: {props.homePostcode}</h3>
+                    <h3>Location: {props.homeLocation}</h3>
                     <span className='option'>Train travel time: {props.trainTime} mins</span>
                     <span className='option'>Train travel cost: £{props.trainCost}</span>
                     <span className='option'>Car travel time: {props.carTime} mins</span>

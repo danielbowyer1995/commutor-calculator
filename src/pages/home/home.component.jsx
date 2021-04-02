@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { action } from 'mobx'
+import clone  from 'lodash/cloneDeep'
 
 import './home.styles.scss'
 
 import ListStore from '../../stores/list-store'
-import FormStore from '../../stores/form-store'
+import TravelStore from '../../stores/travel.store'
+
 
 import InputForm from '../../components/input-form/input-form.component'
 import TravelDetails from '../../components/travel-details/travel-details.component'
@@ -13,22 +15,9 @@ import MyList from '../../components/my-list/my-list.component'
 
 
 class Home extends Component {
-    // constructor(){
-    //     super()
-
-    //     this.state = {
-    //         travelDetails: {
-    //             trainTime: 5,
-    //             trainCost: 5,
-    //             carTime: 30,
-    //             carCost: 10,
-    //             homePostcode: 'BR14DQ',
-    //         }
-    //     }
-    // }
-
-    pushToMyList(){
-        ListStore.myList.push(FormStore.travelDetails) 
+    
+    pushToMyList(location){
+        action(ListStore.myList.push(clone(location)))
     }
     
     render(){
@@ -39,17 +28,18 @@ class Home extends Component {
                 <div className='your-details'>
                     <h1>Your Details</h1>
                     <InputForm />
-                    <TravelDetails 
-                        trainTime={FormStore.travelDetails.dailyTrainTime}
-                        trainCost={FormStore.travelDetails.dailyTrainSpend}
-                        carTime={FormStore.travelDetails.dailyCarTime}
-                        carCost={FormStore.travelDetails.dailyCarSpend}
+                    <TravelDetails
+                        homeLocation={TravelStore.homeLocation}
+                        trainTime={0}
+                        trainCost={0}
+                        carTime={0}
+                        carCost={0}
                     />
                     {/* eslint-disable-next-line */}
                     {
-                        !FormStore.show ? null
+                        !TravelStore.show ? null
                         :
-                        <button onClick={action(this.pushToMyList, () => console.log(ListStore.myList))}>Add to my list</button>
+                        <button onClick={action(() => this.pushToMyList(TravelStore), () => console.log(ListStore.myList))}>Add to my list</button>
                     }
                 </div>
                 <div className='my-list'>

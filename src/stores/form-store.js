@@ -1,15 +1,13 @@
 import { observable } from 'mobx'
 
 const FormStore = observable({
-    travelDetails: {
+    formDetails: {
         show: false,
-        dailyTrainSpend: 0,
-        dailyTrainTime: 0,
-        dailyCarSpend: 0,
-        dailyCarTime: 0,
+        dailyTravelSpend: 0,
+        dailyTravelTime: 0,
         destinationPostCode: '',
         homePostCode: '',
+        homeLocation: '',
     }
 })
-
 export default FormStore

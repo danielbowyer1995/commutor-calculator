@@ -5,6 +5,7 @@ import ListStore from '../../stores/list-store'
 
 import TravelSummary from '../travel-summary/travel-summary.component'
 
+
 class MyList extends Component {
     constructor(){
         super();
@@ -14,13 +15,25 @@ class MyList extends Component {
         }
     }
 
+    // createNewArray() {
+    //     const newListItem = ListStore.myList.splice(0)
+    //     this.state.locations.push(newListItem)
+    //     console.log(newListItem)
+    // }
+
+    // componentDidMount(){
+        
+    // }
+    
+
     render(){
-        console.log(this.state.locations)
+        console.log(ListStore.myList)
         return(
             <div>
-                {this.state.locations.map((location, i) => 
+                {ListStore.myList.map((location, i) => 
                     <div key={`myList${i}`}>
                         <TravelSummary 
+                            location={location.homeLocation}
                             trainTime={location.dailyTrainTime}
                             trainCost={location.dailyTrainSpend}
                             carTime={location.dailyCarTime}
@@ -34,10 +47,3 @@ class MyList extends Component {
 }
 
 export default observer(MyList) 
-
-// : 0,
-//         : 0,
-//         : 0,
-//         : 0,
-//         destinationPostCode: '',
-//         homePostCode: '',
