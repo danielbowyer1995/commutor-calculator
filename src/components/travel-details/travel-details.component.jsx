@@ -7,7 +7,9 @@ import './travel-details.styles.scss'
 
 const TravelDetails = (props) => {
     return(
+        
         <div>
+            {/* add If component conditional in here */}
             {
                 !TravelStore.show ? null
                 :
