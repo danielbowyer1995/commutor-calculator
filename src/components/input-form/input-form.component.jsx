@@ -3,41 +3,33 @@ import { action } from 'mobx'
 import React, { Component } from 'react'
 
 import FormStore from '../../stores/form.store'
-import TravelStore from '../../stores/travel.store';
-// import workOutAreaName from '../../stores/form-store'
+import { getDestination, getHomeLocation, getNearestStations } from '../../utils/calculator.utils'
 
 import './input-form.styles.scss'
+import TravelStore from '../../stores/travel.store';
+import { postcodeValidator } from 'postcode-validator';
 
-
-// @observer
 class InputForm extends Component {
-
-    // constructor(){
-    //     super();
-        
-
-    // }
-
-    findLocation = (postCode) => {
-        let homeLocation = ''
-        if (postCode === 'BR14DQ')
-        homeLocation = 'Bromley'
-        action(TravelStore.homeLocation = homeLocation)
-    }
     
     handleChange(event) {
         const { value, name } = event.target
         let input = value;
         FormStore[name] = input
+        getHomeLocation()
         return input
     }
 
     handleSubmit(event) {
-        alert('A name was submitted');
-        TravelStore.show = true
-        console.log(FormStore.show)
-        // workOutAreaName(FormStore.formDetails.homePostCode)
         event.preventDefault();
+        getDestination()
+        TravelStore.show = true
+    }
+
+    async getStations(latitude, longitude){
+        await getHomeLocation();
+        postcodeValidator(FormStore.homePostCode, 'GB')
+        getNearestStations(latitude, longitude)
+        console.log(TravelStore.show)
     }
 
     render(){
@@ -46,7 +38,7 @@ class InputForm extends Component {
                 <form className='form-fields' onSubmit={action(this.handleSubmit)}>
                     <label>Daily Travel Spend Budget</label>
                     <input 
-                        type='text' 
+                        type='currency' 
                         name='dailyTravelSpend'
                         value={this.input}
                         onChange={action(this.handleChange)}
@@ -55,7 +47,7 @@ class InputForm extends Component {
                     />
                     <label>Daily Travel Time Budget</label>
                     <input 
-                        type='text' 
+                        type='number' 
                         name='dailyTravelTime'
                         value={this.input}
                         onChange={action(this.handleChange)}
@@ -80,7 +72,25 @@ class InputForm extends Component {
                         label='NEW HOME POSTCODE'
                         required
                     />
-                    <input type='submit' value='submit' onClick={() => this.findLocation(FormStore.homePostCode)}/>
+                    {
+                        FormStore.homePostCode.length < 6 ? null
+                        :
+                        <button type='button' id='get-nearest-stations' onClick={this.getStations(FormStore.homeCoords.latitude, FormStore.homeCoords.longitude)}> GET Nearest Stations</button>
+                    }
+                    {
+                        !TravelStore.nearestHomeStation.length ? null
+                        :
+                        <div>
+                            <label>Nearest Home Stations</label>
+                            <select>
+                                {TravelStore.nearestHomeStation.map((station, i) => (
+                                    <option key={i} value={station.name}>{station.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                    }   
+                    
+                    <input type='submit' value='submit' />
                 </form>
             </div>
         )
@@ -89,5 +99,4 @@ class InputForm extends Component {
 
 export default observer(InputForm)
 
-// : '',
-//         : '',
+// onClick={() => this.findLocation(FormStore.homePostCode)}
