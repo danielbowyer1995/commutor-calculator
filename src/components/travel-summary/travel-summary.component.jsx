@@ -4,7 +4,7 @@ import { observer } from 'mobx-react'
 const TravelSummary = (props) => {
     return(
         <div className='location-details'>
-            <span className='option'>Location {props.location}</span>
+            <span className='option-bold'>Location: {props.location}</span>
             <span className='option'>Train travel time: {props.trainTime} mins</span>
             <span className='option'>Train travel cost: £{props.trainCost}</span>
             <span className='option'>Car travel time: {props.carTime} mins</span>

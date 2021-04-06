@@ -1,37 +1,21 @@
 import { observer } from 'mobx-react';
 import React, { Component } from 'react'
 
+import './my-list.styles.scss'
+
 import ListStore from '../../stores/list-store'
 
 import TravelSummary from '../travel-summary/travel-summary.component'
 
 
-class MyList extends Component {
-    constructor(){
-        super();
-
-        this.state = {
-            locations: ListStore.myList
-        }
-    }
-
-    // createNewArray() {
-    //     const newListItem = ListStore.myList.splice(0)
-    //     this.state.locations.push(newListItem)
-    //     console.log(newListItem)
-    // }
-
-    // componentDidMount(){
-        
-    // }
-    
+class MyList extends Component {    
 
     render(){
         console.log(ListStore.myList)
         return(
             <div>
                 {ListStore.myList.map((location, i) => 
-                    <div key={`myList${i}`}>
+                    <div className='list-item' key={`myList${i}`}>
                         <TravelSummary 
                             location={location.homeLocation}
                             trainTime={location.dailyTrainTime}

@@ -5,14 +5,18 @@
     grid-gap: 1rem;
 
     .your-details {
-        width: 400px;
+        width: 350px;
+        background-color: #F3FDFF;
         justify-self: center;
         display: inline-grid;
+        border-style: solid;
     }
 
     .my-list {
-        width: 400px;
+        width: 350px;
+        background-color: #F3FDFF;
         justify-self: center;
+        border-style: solid;
     }
 }
 

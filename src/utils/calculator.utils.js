@@ -37,13 +37,24 @@ export async function getHomeLocation(){
         .catch(err => console.log(err))
 }
 
-export function getNearestStations(latitude,longitude){
-    axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=train_station&key=${API_KEY}`,{
+export function getNearestHomeStations(){
+    axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${FormStore.homeCoords.latitude},${FormStore.homeCoords.longitude}&radius=5000&type=train_station&key=${API_KEY}`,{
         headers: {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',}})
         .then(res => {
             TravelStore.nearestHomeStation = res.data.results
+            console.log(TravelStore.nearestHomeStation)
+        })
+}
+
+export function getNearestDestinationStations(){
+    axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${FormStore.destinationCoords.latitude},${FormStore.destinationCoords.longitude}&radius=5000&type=train_station&key=${API_KEY}`,{
+        headers: {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',}})
+        .then(res => {
+            TravelStore.nearestDestinationStation = res.data.results
             console.log(TravelStore.nearestHomeStation)
         })
 }
