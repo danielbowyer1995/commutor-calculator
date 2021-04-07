@@ -59,3 +59,17 @@ export function getNearestDestinationStations(){
         })
 }
 
+export const getTravelDetails = () => {
+    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.destinationPostCode}/to/${FormStore.homePostCode}`)
+     .then(res => {
+         console.log(res.data.journeys)
+         TravelStore.journeyData = res.data.journeys
+         TravelStore.trainTravelTime = res.data.journeys[0].duration
+         console.log(TravelStore.journeyData[0])
+        })
+    //  .then(res => {
+    //      TravelStore.journeyData = res.data
+    //  })
+    //  .then(console.log(TravelStore.journeyData))
+}
+

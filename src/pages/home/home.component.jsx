@@ -46,13 +46,18 @@ class Home extends Component {
                 <div className='your-details'>
                     <h1>Your Details</h1>
                     <InputForm />
-                    <TravelDetails
+                    {
+                        !TravelStore.journeyData.length ? null 
+                        :
+                        <TravelDetails
                         homeLocation={TravelStore.homeLocation}
-                        trainTime={0}
+                        trainTime={TravelStore.trainTravelTime}
                         trainCost={0}
                         carTime={0}
                         carCost={0}
-                    />
+                        />
+                    }
+                    
                     {/* eslint-disable-next-line */}
                     {
                         !TravelStore.show ? null

@@ -5,6 +5,8 @@ const TravelStore = observable({
     homeLocation: '',
     nearestDestinationStation: '',
     nearestHomeStation: '',
+    journeyData: {},
+    trainTravelTime: ''
 
 })
 export default TravelStore

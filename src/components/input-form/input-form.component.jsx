@@ -3,11 +3,12 @@ import { action } from 'mobx'
 import React, { Component } from 'react'
 
 import FormStore from '../../stores/form.store'
-import { getDestination, getHomeLocation, getNearestHomeStations, getNearestDestinationStations } from '../../utils/calculator.utils'
+import { validatePostCode, 
+    getHomeLocation, 
+    getTravelDetails, 
+} from '../../utils/calculator.utils'
 
 import './input-form.styles.scss'
-import TravelStore from '../../stores/travel.store';
-import { postcodeValidator } from 'postcode-validator';
 
 class InputForm extends Component {
     
@@ -18,22 +19,25 @@ class InputForm extends Component {
         return input
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
+        await getHomeLocation()
+        getTravelDetails()
         event.preventDefault();
-        postcodeValidator(FormStore.destinationPostCode, 'GB')
-        postcodeValidator(FormStore.homePostCode, 'GB')
-        TravelStore.show = true
+        validatePostCode(FormStore.destinationPostCode, 'GB')
+        validatePostCode(FormStore.homePostCode, 'GB')
+        
+        
     }
 
-    async getDestinationStations(){
-        await getDestination();
-        getNearestDestinationStations()
-    }
+    // async getDestinationStations(){
+    //     await getDestination();
+    //     getNearestDestinationStations()
+    // }
 
-    async getHomeStations(){
-        await getHomeLocation();
-        getNearestHomeStations()
-    }
+    // async getHomeStations(){
+    //     await getHomeLocation();
+    //     getNearestHomeStations()
+    // }
 
     render(){
         return(
@@ -69,7 +73,7 @@ class InputForm extends Component {
                         label='DESTINATION POST CODE'
                         required
                     />
-                    {
+                    {/* {
                         FormStore.destinationPostCode.length < 6 ? null
                         :
                         <button type='button' id='get-nearest-destination-stations' 
@@ -87,7 +91,7 @@ class InputForm extends Component {
                                 ))}
                             </select>
                         </div>
-                    }   
+                    }    */}
                     <label>New Home Postcode</label>
                     <input 
                         className='input-text'
@@ -98,7 +102,7 @@ class InputForm extends Component {
                         label='NEW HOME POSTCODE'
                         required
                     />
-                    {
+                    {/* {
                         FormStore.homePostCode.length < 6 ? null
                         :
                         <button type='button' id='get-nearest-home-stations' 
@@ -116,7 +120,7 @@ class InputForm extends Component {
                                 ))}
                             </select>
                         </div>
-                    }   
+                    }    */}
                     <input className='submit-button' type='submit' value='SUBMIT' />
                 </form>
             </div>

@@ -18,7 +18,7 @@ class MyList extends Component {
                     <div className='list-item' key={`myList${i}`}>
                         <TravelSummary 
                             location={location.homeLocation}
-                            trainTime={location.dailyTrainTime}
+                            trainTime={location.trainTravelTime}
                             trainCost={location.dailyTrainSpend}
                             carTime={location.dailyCarTime}
                             carCost={location.dailyCarSpend}
