@@ -4,8 +4,6 @@ import {postcodeValidator} from 'postcode-validator'
 import FormStore from '../stores/form.store'
 import TravelStore from '../stores/travel.store'
 
-const API_KEY = 'AIzaSyBWgP_gLfTd_jhIMApFTQiVuE9Asm_NU-I'
-
 export async function validatePostCode(postCode) {
     if (postcodeValidator(postCode, 'GB') === true) {
         TravelStore.show = true
@@ -49,7 +47,7 @@ export function getNearestHomeStations(){
 }
 
 export function getNearestDestinationStations(){
-    axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${FormStore.destinationCoords.latitude},${FormStore.destinationCoords.longitude}&radius=5000&type=train_station&key=${API_KEY}`,{
+    axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${FormStore.destinationCoords.latitude},${FormStore.destinationCoords.longitude}&radius=5000&type=train_station&key=FILLIN`,{
         headers: {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',}})
