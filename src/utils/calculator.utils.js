@@ -7,14 +7,12 @@ import TravelStore from '../stores/travel.store'
 
 export const getValueFormat = (index) => {
     if (FormStore.dailyTravelTime > ListStore.myList[index].trainTravelTime) {
-        TravelStore.lowerValue = true
+        ListStore.myList[index].lowerValue = true
+        ListStore.myList[index].higherValue = false
     }
-    else if (FormStore.dailyTravelTime < ListStore.myList[index].trainTravelTime) {
-        TravelStore.higherValue = true
-    }
-    else {
-        TravelStore.lowerValue = false
-        TravelStore.higherValue = false
+    if (FormStore.dailyTravelTime < ListStore.myList[index].trainTravelTime) {
+        ListStore.myList[index].lowerValue = false
+        ListStore.myList[index].higherValue = true
     }
 }
 

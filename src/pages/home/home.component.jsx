@@ -11,6 +11,7 @@ import TravelStore from '../../stores/travel.store'
 import InputForm from '../../components/input-form/input-form.component'
 import TravelDetails from '../../components/travel-details/travel-details.component'
 import MyList from '../../components/my-list/my-list.component'
+import { getValueFormat } from '../../utils/calculator.utils'
 
 
 
@@ -19,6 +20,7 @@ class Home extends Component {
 
     pushToMyList(location){
         action(ListStore.myList.push(clone(location)))
+        getValueFormat(ListStore.myList.length - 1)
     }
 
     render(){

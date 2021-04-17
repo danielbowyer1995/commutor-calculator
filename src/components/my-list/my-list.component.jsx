@@ -10,14 +10,6 @@ import { getValueFormat } from '../../utils/calculator.utils';
 
 
 class MyList extends Component {
-    
-    constructor(){
-        super();
-
-        if (ListStore.myList.length < 0){
-            getValueFormat(ListStore.myList.indexOf(0))
-        }
-    }
 
     render(){
         console.log(ListStore.myList)
@@ -31,6 +23,7 @@ class MyList extends Component {
                             trainCost={location.dailyTrainSpend}
                             carTime={location.dailyCarTime}
                             carCost={location.dailyCarSpend}
+                            id={i}
                         />
                         <span className='cross' onClick={() => ListStore.myList.splice(i,1)}>&#215;</span>
                     </div>

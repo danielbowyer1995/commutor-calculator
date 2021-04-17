@@ -3,13 +3,11 @@ import { action } from 'mobx'
 import React, { Component } from 'react'
 
 import FormStore from '../../stores/form.store'
-import ListStore from '../../stores/list-store'
 
 import { validatePostCode, 
     getHomeLocation, 
     getTravelDetails,
     getFareInfo,
-    getValueFormat, 
 } from '../../utils/calculator.utils'
 
 import './input-form.styles.scss'
@@ -29,10 +27,7 @@ class InputForm extends Component {
         event.preventDefault();
         validatePostCode(FormStore.destinationPostCode, 'GB')
         validatePostCode(FormStore.homePostCode, 'GB')
-        getFareInfo()
-        getValueFormat(ListStore.myList.length)
-        
-        
+        getFareInfo()        
     }
 
     render(){

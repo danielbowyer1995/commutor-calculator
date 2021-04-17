@@ -4,13 +4,14 @@ import { observer } from 'mobx-react'
 import './travel-summary.styles.scss'
 
 import TravelStore from '../../stores/travel.store'
+import ListStore from '../../stores/list-store'
 
 const TravelSummary = (props) => {
     return(
         <div className='location-details'>
             <span className='option-bold'>Location: {props.location}</span>
             <span className='option' 
-                style={TravelStore.lowerValue ? {color:  "#13B000"} : null | TravelStore.higherValue ? {color:  "red"} : null}
+                style={ListStore.myList[props.id].lowerValue ? {color:  "#13B000"} : null | ListStore.myList[props.id].higherValue ? {color:  "red"} : null}
             >
                 Train travel time: {props.trainTime} mins
             </span>
