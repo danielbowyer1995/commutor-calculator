@@ -1,5 +1,5 @@
 {
-  "homepage": "https://danielbowyer1995.github.io/commutor-calculator/",
+  "homepage": "https://danielbowyer1995.github.io/commutor-calculator",
   "name": "commuter-calculator",
   "version": "0.1.0",
   "private": true,
@@ -23,7 +23,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
