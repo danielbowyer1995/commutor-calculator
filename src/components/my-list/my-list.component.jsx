@@ -6,7 +6,6 @@ import './my-list.styles.scss'
 import ListStore from '../../stores/list-store'
 
 import TravelSummary from '../travel-summary/travel-summary.component'
-import { getValueFormat } from '../../utils/calculator.utils';
 
 
 class MyList extends Component {

@@ -1,5 +1,7 @@
 .location-details {
     display: inline-grid;
+    color: white;
+;
 
     .option{
         padding: 2px;
@@ -8,7 +10,9 @@
 
     .option-bold{
         font-weight: bold;
+        text-transform: uppercase;
         padding: 2px;
         margin-bottom: 10px;
+        color: #385E72;
     }
 }

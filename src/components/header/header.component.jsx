@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './header.styles.scss'
-import logo from '../../assets/commuter-calculator-logo.png'
+import logo from '../../assets/commuter-calculator-logo-blue.png'
 
 const Header = () => (
     <div className='logo-container'>

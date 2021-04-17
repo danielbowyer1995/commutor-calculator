@@ -3,7 +3,6 @@ import { observer } from 'mobx-react'
 
 import './travel-summary.styles.scss'
 
-import TravelStore from '../../stores/travel.store'
 import ListStore from '../../stores/list-store'
 
 const TravelSummary = (props) => {

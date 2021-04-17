@@ -2,25 +2,53 @@
     align-items: center;
 }
 
+
+
 .form-fields {
     display: grid;
     margin: 10px;
     padding: 2px;
+    background-color: #B7CFDC;
+    color: white;
+    // font-family: 'Lato', sans-serif;
 
     .input-number {
         justify-self: center;
-        width: 100px;
+        width: 50px;
+        height: 25px;
         border-style: solid;
-        border-color: #ff7200;
+        border-color: #385E72;
         border-radius: 25px;
+        padding-left: 10px;
+        text-align: center;
+        font-family: 'Lato', sans-serif;
+        color: #385E72;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    .content-label-money {
+        display: flex;
+        position: absolute;
     }
 
     .input-text {
         justify-self: center;
         width: 100px;
+        height: 25px;
         border-style: solid;;
-        border-color: #ff7200;
+        border-color: #385E72;
         border-radius: 25px;
+        text-align: center;
+        font-family: 'Lato', sans-serif;
+        color: #385E72;
+        text-decoration: 0;
+
+        &:focus {
+            outline: 0;
+        }
     }
 }
 
@@ -39,13 +67,17 @@ button {
 
     border: none;
     border-radius: 25px;
-    background-color: #ff7200;
+    background-color: #385E72;
     color: white;
     text-decoration: none;
     font-size: 16px;
 
     &:hover {
         cursor: pointer;
+    }
+
+    &:focus {
+        outline: 0;
     }
 }
 
@@ -64,12 +96,16 @@ select{
 
     border: none;
     border-radius: 25px;
-    background-color: #13B000;
+    background-color: #13B000 !important;
     font-size: 15px;
     font-weight: 500;
     color: white;
 
     &:hover {
         cursor: pointer;
+    }
+
+    &:focus {
+        outline: 0;
     }
 }
