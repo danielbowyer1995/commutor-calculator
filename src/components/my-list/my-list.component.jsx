@@ -6,14 +6,13 @@ import './my-list.styles.scss'
 import ListStore from '../../stores/list-store'
 
 import TravelSummary from '../travel-summary/travel-summary.component'
-
-
 class MyList extends Component {
 
     render(){
         console.log(ListStore.myList)
+        
         return(
-            <div>
+            <div className='list-item-container'>
                 {ListStore.myList.map((location, i) => 
                     <div className='list-item' key={`myList${i}`}>
                         <TravelSummary 

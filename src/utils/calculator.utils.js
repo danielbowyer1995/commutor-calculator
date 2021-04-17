@@ -84,8 +84,9 @@ export async function getHomeLocation(){
 // }
 
 export const getTravelDetails = () => {
-    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.destinationPostCode}/to/${FormStore.homePostCode}&nationalSearch=true`)
+    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&nationalSearch=true`)
      .then(res => {
+         console.log(res)
          TravelStore.journeyData = res.data.journeys
          TravelStore.trainTravelTime = res.data.journeys[0].duration
         })
@@ -96,7 +97,7 @@ export const getTravelDetails = () => {
 }
 
 export const getFareInfo = () => {
-    axios.get('https://api.tfl.gov.uk/StopPoint/910GGRVPK/FareTo/910GLNDNBDC')
+    axios.get('https://api.tfl.gov.uk/StopPoint/910GNWCRELL/FareTo/910GLNDNBDC')
     .then(res => {
         console.log(res)
     })

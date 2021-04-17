@@ -27,36 +27,41 @@ class Home extends Component {
         return(
             <div>
                 <div className='home-grid'>
-                <div className='your-details'>
-                    <h2>YOUR DETAILS</h2>
-                    <InputForm />
+                    <div className='your-details'>
+                        <h2>YOUR DETAILS</h2>
+                        <InputForm />
+                        {
+                            !TravelStore.journeyData.length ? null 
+                            :
+                            <TravelDetails
+                            homeLocation={TravelStore.homeLocation}
+                            trainTime={TravelStore.trainTravelTime}
+                            trainCost={0}
+                            carTime={0}
+                            carCost={0}
+                            />
+                        }
+                        
+                        {/* eslint-disable-next-line */}
+                        {
+                            !TravelStore.show ? null
+                            :
+                            <button 
+                                className='add-to-list-button' 
+                                onClick={action(() => this.pushToMyList(TravelStore))}>
+                                ADD TO MY LIST
+                            </button>
+                        }
+                    </div>
                     {
-                        !TravelStore.journeyData.length ? null 
+                        ListStore.myList.length <= 0 ? null 
                         :
-                        <TravelDetails
-                        homeLocation={TravelStore.homeLocation}
-                        trainTime={TravelStore.trainTravelTime}
-                        trainCost={0}
-                        carTime={0}
-                        carCost={0}
-                        />
+                        <div className='my-list'>
+                            <h2>MY LIST</h2>
+                            <MyList/>
+                        </div>
                     }
                     
-                    {/* eslint-disable-next-line */}
-                    {
-                        !TravelStore.show ? null
-                        :
-                        <button 
-                            className='add-to-list-button' 
-                            onClick={action(() => this.pushToMyList(TravelStore))}>
-                            ADD TO MY LIST
-                        </button>
-                    }
-                </div>
-                <div className='my-list'>
-                    <h2>MY LIST</h2>
-                    <MyList/>
-                </div>
                 </div>
             </div>
             
