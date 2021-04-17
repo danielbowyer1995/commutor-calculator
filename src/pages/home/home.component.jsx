@@ -12,39 +12,21 @@ import InputForm from '../../components/input-form/input-form.component'
 import TravelDetails from '../../components/travel-details/travel-details.component'
 import MyList from '../../components/my-list/my-list.component'
 
-// const api = axios.create({
-//     baseURL: 'api.postcodes.io/postcodes/br14dq'
-// })
 
 
 class Home extends Component {
 
-    // componentDidMount(){
-    //     let postCode = 'BR14DQ'
-    //     axios.get(`https://api.postcodes.io/postcodes/${postCode}`)
-    //     .then(res => {
-    //         TravelStore.homeLocation = res.data.admin_district
-    //         console.log(res.data.admin_district)
-    //     })
-    // }
-    
+
     pushToMyList(location){
         action(ListStore.myList.push(clone(location)))
     }
 
-    // componentDidMount(){
-    //     fetch('api.postcodes.io/postcodes/br14dq')
-    //         .then(response => response.json())
-    //         .then(data => console.log(data))
-    // }
-    
     render(){
         return(
             <div>
-                <h1>Commuter Calculator</h1>
                 <div className='home-grid'>
                 <div className='your-details'>
-                    <h1>Your Details</h1>
+                    <h2>YOUR DETAILS</h2>
                     <InputForm />
                     {
                         !TravelStore.journeyData.length ? null 
@@ -62,11 +44,15 @@ class Home extends Component {
                     {
                         !TravelStore.show ? null
                         :
-                        <button onClick={action(() => this.pushToMyList(TravelStore), () => console.log(ListStore.myList))}>Add to my list</button>
+                        <button 
+                            className='add-to-list-button' 
+                            onClick={action(() => this.pushToMyList(TravelStore))}>
+                            ADD TO MY LIST
+                        </button>
                     }
                 </div>
                 <div className='my-list'>
-                    <h1>My List</h1>
+                    <h2>MY LIST</h2>
                     <MyList/>
                 </div>
                 </div>

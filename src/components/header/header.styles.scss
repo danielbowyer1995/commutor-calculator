@@ -1,0 +1,18 @@
+.logo-container{
+    display: flex;
+    justify-content: center;
+
+    .logo {
+        max-width: 500px;
+        max-height: 250px;
+    }
+
+    @media (min-width: 375px) {
+        .logo { width: 250px; height: 100px; }
+    }
+
+    @media (min-width: 600px) {
+        .logo { width: 500px; height: 200px; }
+    }
+
+}

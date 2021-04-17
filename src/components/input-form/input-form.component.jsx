@@ -3,9 +3,13 @@ import { action } from 'mobx'
 import React, { Component } from 'react'
 
 import FormStore from '../../stores/form.store'
+import ListStore from '../../stores/list-store'
+
 import { validatePostCode, 
     getHomeLocation, 
-    getTravelDetails, 
+    getTravelDetails,
+    getFareInfo,
+    getValueFormat, 
 } from '../../utils/calculator.utils'
 
 import './input-form.styles.scss'
@@ -25,29 +29,24 @@ class InputForm extends Component {
         event.preventDefault();
         validatePostCode(FormStore.destinationPostCode, 'GB')
         validatePostCode(FormStore.homePostCode, 'GB')
+        getFareInfo()
+        getValueFormat(ListStore.myList.length)
         
         
     }
-
-    // async getDestinationStations(){
-    //     await getDestination();
-    //     getNearestDestinationStations()
-    // }
-
-    // async getHomeStations(){
-    //     await getHomeLocation();
-    //     getNearestHomeStations()
-    // }
 
     render(){
         return(
             <div className='input-form'>
                 <form className='form-fields' onSubmit={action(this.handleSubmit)}>
-                    <label>Daily Travel Spend Budget</label>
+                    <label className='label-name'>
+                        <span className='content-name'>Daily Travel Spend Budget</span>
+                    </label>
                     <input
                         className='input-number' 
                         type='number' 
                         name='dailyTravelSpend'
+                        autoComplete='off'
                         value={this.input}
                         onChange={action(this.handleChange)}
                         label='DAILY TRAVEL SPEND'
@@ -58,6 +57,7 @@ class InputForm extends Component {
                         className='input-number' 
                         type='number' 
                         name='dailyTravelTime'
+                        autoComplete='off'
                         value={this.input}
                         onChange={action(this.handleChange)}
                         label='DAILY TRAVEL TIME'
@@ -73,25 +73,6 @@ class InputForm extends Component {
                         label='DESTINATION POST CODE'
                         required
                     />
-                    {/* {
-                        FormStore.destinationPostCode.length < 6 ? null
-                        :
-                        <button type='button' id='get-nearest-destination-stations' 
-                            onClick={() => this.getDestinationStations()}> 
-                            Find Nearest Stations
-                        </button>
-                    }
-                    {
-                        !TravelStore.nearestDestinationStation.length ? null
-                        :
-                        <div>
-                            <select>
-                                {TravelStore.nearestDestinationStation.map((station, i) => (
-                                    <option key={i} value={station.name}>{station.name}</option>
-                                ))}
-                            </select>
-                        </div>
-                    }    */}
                     <label>New Home Postcode</label>
                     <input 
                         className='input-text'
@@ -102,25 +83,6 @@ class InputForm extends Component {
                         label='NEW HOME POSTCODE'
                         required
                     />
-                    {/* {
-                        FormStore.homePostCode.length < 6 ? null
-                        :
-                        <button type='button' id='get-nearest-home-stations' 
-                            onClick={() => this.getHomeStations()}> 
-                            Find Nearest Stations
-                        </button>
-                    }
-                    {
-                        !TravelStore.nearestHomeStation.length ? null
-                        :
-                        <div>
-                            <select>
-                                {TravelStore.nearestHomeStation.map((station, i) => (
-                                    <option key={i} value={station.name}>{station.name}</option>
-                                ))}
-                            </select>
-                        </div>
-                    }    */}
                     <input className='submit-button' type='submit' value='SUBMIT' />
                 </form>
             </div>

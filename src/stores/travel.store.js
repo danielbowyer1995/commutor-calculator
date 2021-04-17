@@ -6,7 +6,9 @@ const TravelStore = observable({
     nearestDestinationStation: '',
     nearestHomeStation: '',
     journeyData: {},
-    trainTravelTime: ''
+    trainTravelTime: '',
+    lowerValue: false,
+    higherValue: false,
 
 })
 export default TravelStore

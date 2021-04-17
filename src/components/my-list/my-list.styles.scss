@@ -1,5 +1,18 @@
 
 .list-item {
+    position: relative;
+    background-color: white;
     margin: 10px;
     padding: 16px;
+}
+
+.cross {
+    position: absolute;
+    padding-left: 20px;
+    font-size: xx-large;
+
+    &:hover {
+        cursor: pointer;
+        color: red;
+    }    
 }

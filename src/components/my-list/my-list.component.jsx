@@ -6,9 +6,18 @@ import './my-list.styles.scss'
 import ListStore from '../../stores/list-store'
 
 import TravelSummary from '../travel-summary/travel-summary.component'
+import { getValueFormat } from '../../utils/calculator.utils';
 
 
-class MyList extends Component {    
+class MyList extends Component {
+    
+    constructor(){
+        super();
+
+        if (ListStore.myList.length < 0){
+            getValueFormat(ListStore.myList.indexOf(0))
+        }
+    }
 
     render(){
         console.log(ListStore.myList)
@@ -23,6 +32,7 @@ class MyList extends Component {
                             carTime={location.dailyCarTime}
                             carCost={location.dailyCarSpend}
                         />
+                        <span className='cross' onClick={() => ListStore.myList.splice(i,1)}>&#215;</span>
                     </div>
                 )}
             </div>

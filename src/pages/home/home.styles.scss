@@ -5,18 +5,27 @@
     grid-gap: 1rem;
 
     .your-details {
+        max-height: 750px;
         width: 350px;
-        background-color: #F3FDFF;
+        background-color: white;
         justify-self: center;
         display: inline-grid;
         border-style: solid;
+        border-color: #ff7200;
+        margin-bottom: 100px;
+
+        .add-to-list-button {
+            margin-bottom: 25px;
+        }
     }
 
     .my-list {
         width: 350px;
-        background-color: #F3FDFF;
+        background-color: white;
         justify-self: center;
         border-style: solid;
+        border-color: #ff7200;
+        margin-bottom: 100px;
     }
 }
 
