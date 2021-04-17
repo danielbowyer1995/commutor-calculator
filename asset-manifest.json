@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/commutor-calculator/static/css/main.d993e399.chunk.css",
-    "main.js": "/commutor-calculator/static/js/main.0e44096b.chunk.js",
-    "main.js.map": "/commutor-calculator/static/js/main.0e44096b.chunk.js.map",
+    "main.css": "/commutor-calculator/static/css/main.c82dd61b.chunk.css",
+    "main.js": "/commutor-calculator/static/js/main.375a3b75.chunk.js",
+    "main.js.map": "/commutor-calculator/static/js/main.375a3b75.chunk.js.map",
     "runtime-main.js": "/commutor-calculator/static/js/runtime-main.31cc26cf.js",
     "runtime-main.js.map": "/commutor-calculator/static/js/runtime-main.31cc26cf.js.map",
     "static/js/2.3e8e13cc.chunk.js": "/commutor-calculator/static/js/2.3e8e13cc.chunk.js",
     "static/js/2.3e8e13cc.chunk.js.map": "/commutor-calculator/static/js/2.3e8e13cc.chunk.js.map",
     "index.html": "/commutor-calculator/index.html",
-    "static/css/main.d993e399.chunk.css.map": "/commutor-calculator/static/css/main.d993e399.chunk.css.map",
+    "static/css/main.c82dd61b.chunk.css.map": "/commutor-calculator/static/css/main.c82dd61b.chunk.css.map",
     "static/js/2.3e8e13cc.chunk.js.LICENSE.txt": "/commutor-calculator/static/js/2.3e8e13cc.chunk.js.LICENSE.txt",
-    "static/media/commuter-calculator-logo.c9dae435.png": "/commutor-calculator/static/media/commuter-calculator-logo.c9dae435.png"
+    "static/media/commuter-calculator-logo-blue.5e03eebf.png": "/commutor-calculator/static/media/commuter-calculator-logo-blue.5e03eebf.png"
   },
   "entrypoints": [
     "static/js/runtime-main.31cc26cf.js",
     "static/js/2.3e8e13cc.chunk.js",
-    "static/css/main.d993e399.chunk.css",
-    "static/js/main.0e44096b.chunk.js"
+    "static/css/main.c82dd61b.chunk.css",
+    "static/js/main.375a3b75.chunk.js"
   ]
 }
