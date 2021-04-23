@@ -413,7 +413,7 @@ export const zoneFour = [
     'Goodmayes Rail Station',
     'Grange Hill Rail Station',
     'Greenford Rail Station',
-    'Grove Park Station',
+    'Grove Park Rail Station',
     'Hackbridge Rail Station',
     'Hainault Rail Station',
     'Hanwell Rail Station',

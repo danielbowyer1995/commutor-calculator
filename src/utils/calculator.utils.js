@@ -104,7 +104,7 @@ export async function getHomeLocation(){
 // }
 
 export const getTravelDetails = () => {
-    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&mode=walking,national-rail&nationalSearch=true`)
+    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&mode=walking,train&nationalSearch=true`)
      .then(res => {
          console.log(res)
          TravelStore.journeyData = res.data.journeys
@@ -249,7 +249,7 @@ export const getFarePrice = (zoneOne, zoneTwo) => {
         TravelStore.trainTravelCost = 13.90
     }
     else {
-        TravelStore.trainTravelCost = 9001
+        TravelStore.trainTravelCost = 37.50
     }
 
     console.log(TravelStore.trainTravelCost)
@@ -276,7 +276,7 @@ export const getAllTravelDetails = () => {
     setTimeout(() => {
         setTimeout(() => {
             findNearestStation()
-        }, 100)
+        }, 500)
         setTimeout(() => {
             getHomeFareZone(TravelStore.nearestHomeStation)
         }, 100)
