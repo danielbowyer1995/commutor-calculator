@@ -169,7 +169,7 @@ export const zoneTwo = [
     'Mornington Crescent Rail Station',
     'Mudchute Rail Station',
     'New Cross Gate Rail Station',
-    'New Cross Rail Station',
+    'New Cross ELL Rail Station',
     'North Acton Rail Station',
     'North Dulwich Rail Station',
     'North Greenwich Rail Station',
