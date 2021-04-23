@@ -276,19 +276,19 @@ export const getAllTravelDetails = () => {
     setTimeout(() => {
         setTimeout(() => {
             findNearestStation()
-        }, 500)
+        }, 100)
         setTimeout(() => {
             getHomeFareZone(TravelStore.nearestHomeStation)
-        }, 100)
+        }, 200)
         setTimeout(() => {
             getDestinationFareZone(TravelStore.nearestDestinationStation)
-        }, 100)
+        }, 300)
         setTimeout(() => {
             getFarePrice(TravelStore.homeFareZone, TravelStore.destinationFareZone)
-        }, 100)
+        }, 400)
         setTimeout(() => {
             FormStore.loading = false
             TravelStore.show = true 
-        }, 100)
+        }, 500)
     }, 4000)
 }
