@@ -67,8 +67,8 @@ export const zoneOne = [
     'Vauxhall Rail Station',
     'Victoria Rail Station',
     'Warren Street Rail Station',
-    'Waterloo East Rail Station',
-    'Waterloo Rail Station',
+    'London Waterloo East Rail Station',
+    'London Waterloo Rail Station',
     'Westminster Rail Station',  
 ]
 

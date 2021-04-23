@@ -467,7 +467,7 @@ const data = {
 'Castleton Moor' : 'CSM',
 'Caterham' : 'CAT',
 'Catford' : 'CTF',
-'Catford Bridge' : 'CFB',
+'Catford Bridge Rail Station' : 'CFB',
 'Cathays' : 'CYS',
 'Cathcart' : 'CCT',
 'Cattal' : 'CTL',

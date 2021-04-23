@@ -104,7 +104,7 @@ export async function getHomeLocation(){
 // }
 
 export const getTravelDetails = () => {
-    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&mode=trains&nationalSearch=true`)
+    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&mode=walking,national-rail&nationalSearch=true`)
      .then(res => {
          console.log(res)
          TravelStore.journeyData = res.data.journeys
@@ -252,21 +252,23 @@ export const getFarePrice = (zoneOne, zoneTwo) => {
         TravelStore.trainTravelCost = 9001
     }
 
+    console.log(TravelStore.trainTravelCost)
+
 }
 
 export const findNearestStation = () => {
     let legs = TravelStore.journeyData[0].legs
     let filteredArrivalPoint = legs.filter((currentElement) => {
-        return currentElement.arrivalPoint.commonName.includes('Station') === true
+        return currentElement.mode.id === 'national-rail'
     })
     console.log(filteredArrivalPoint[0].arrivalPoint.commonName)
     TravelStore.nearestHomeStation = filteredArrivalPoint[0].arrivalPoint.commonName
 
     let filteredDeparturePoint = legs.filter((currentElement) => {
-        return currentElement.arrivalPoint.commonName.includes('Station') === true
+        return currentElement.mode.id === 'national-rail'
     })
-    console.log(filteredDeparturePoint[filteredDeparturePoint.length - 1].arrivalPoint.commonName)
-    TravelStore.nearestDestinationStation = filteredDeparturePoint[filteredDeparturePoint.length - 1].arrivalPoint.commonName
+    console.log(filteredDeparturePoint[filteredDeparturePoint.length - 1].departurePoint.commonName)
+    TravelStore.nearestDestinationStation = filteredDeparturePoint[filteredDeparturePoint.length - 1].departurePoint.commonName
 }
 
 export const getAllTravelDetails = () => {
@@ -282,7 +284,7 @@ export const getAllTravelDetails = () => {
             getDestinationFareZone(TravelStore.nearestDestinationStation)
         }, 100)
         setTimeout(() => {
-            getFarePrice(TravelStore.destinationFareZone, TravelStore.homeFareZone)
+            getFarePrice(TravelStore.homeFareZone, TravelStore.destinationFareZone)
         }, 100)
         setTimeout(() => {
             FormStore.loading = false
