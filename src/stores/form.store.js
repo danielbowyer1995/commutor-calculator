@@ -1,6 +1,7 @@
 import { observable } from 'mobx'
 
 const FormStore = observable({
+    loading: false,
     show: false,
     showDropDown: false,
     dailyTravelSpend: 0,

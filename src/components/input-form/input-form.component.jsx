@@ -7,7 +7,11 @@ import FormStore from '../../stores/form.store'
 import { validatePostCode, 
     getHomeLocation, 
     getTravelDetails,
-    getFareInfo,
+    getAllTravelDetails,
+    // getHomeFareZone,
+    // getFarePrice,
+    // getDestinationFareZone,
+    // findNearestStation,
 } from '../../utils/calculator.utils'
 
 import './input-form.styles.scss'
@@ -27,7 +31,11 @@ class InputForm extends Component {
         event.preventDefault();
         validatePostCode(FormStore.destinationPostCode, 'GB')
         validatePostCode(FormStore.homePostCode, 'GB')
-        getFareInfo()        
+        getAllTravelDetails()
+        // findNearestStation()
+        // getHomeFareZone(TravelStore.nearestHomeStation)
+        // getDestinationFareZone(TravelStore.nearestDestinationStation)
+        // getFarePrice(TravelStore.destinationFareZone, TravelStore.homeFareZone)
     }
 
     render(){
@@ -35,7 +43,7 @@ class InputForm extends Component {
             <div className='input-form'>
                 <form className='form-fields' onSubmit={action(this.handleSubmit)}>
                     <label className='label-name'>
-                        <span className='content-name'>Daily Travel Spend Budget</span>
+                        <span className='content-name'>Daily Travel Spend Budget 💰 📈</span>
                     </label>
                     <input
                         className='input-number' 
@@ -47,7 +55,7 @@ class InputForm extends Component {
                         label='DAILY TRAVEL SPEND'
                         required
                     />
-                    <label>Daily Travel Time Budget</label>
+                    <label>Daily Travel Time Budget 🚂 ⏱️</label>
                     <input 
                         className='input-number' 
                         type='number' 
@@ -58,7 +66,7 @@ class InputForm extends Component {
                         label='DAILY TRAVEL TIME'
                         required
                     />
-                    <label>Destination Postcode</label>
+                    <label>Destination Postcode 🏢</label>
                     <input 
                         className='input-text'
                         type='text' 
@@ -68,7 +76,7 @@ class InputForm extends Component {
                         label='DESTINATION POST CODE'
                         required
                     />
-                    <label>New Home Postcode</label>
+                    <label>New Home Postcode 🏡</label>
                     <input 
                         className='input-text'
                         type='text' 

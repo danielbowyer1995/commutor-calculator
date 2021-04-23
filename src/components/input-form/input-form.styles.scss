@@ -8,7 +8,7 @@
     display: grid;
     margin: 10px;
     padding: 2px;
-    background-color: #B7CFDC;
+    background-color: #107869;
     color: white;
     // font-family: 'Lato', sans-serif;
 
@@ -17,12 +17,12 @@
         width: 50px;
         height: 25px;
         border-style: solid;
-        border-color: #385E72;
+        border-color: #08313A;
         border-radius: 10px;
         padding-left: 10px;
         text-align: center;
         font-family: 'Lato', sans-serif;
-        color: #385E72;
+        color: #08313A;
 
         &:focus {
             outline: 0;
@@ -39,11 +39,11 @@
         width: 100px;
         height: 25px;
         border-style: solid;;
-        border-color: #385E72;
+        border-color: #08313A;
         border-radius: 10px;
         text-align: center;
         font-family: 'Lato', sans-serif;
-        color: #385E72;
+        color: #08313A;
         text-decoration: 0;
 
         &:focus {
@@ -67,7 +67,7 @@ button {
 
     border: none;
     border-radius: 25px;
-    background-color: #385E72;
+    background-color: #08313A;
     color: white;
     text-decoration: none;
     font-size: 16px;
@@ -96,7 +96,7 @@ select{
 
     border: none;
     border-radius: 25px;
-    background-color: #13B000 !important;
+    background-color: #5CD85A !important;
     font-size: 15px;
     font-weight: 500;
     color: white;

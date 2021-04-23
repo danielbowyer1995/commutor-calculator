@@ -18,7 +18,7 @@ class MyList extends Component {
                         <TravelSummary 
                             location={location.homeLocation}
                             trainTime={location.trainTravelTime}
-                            trainCost={location.dailyTrainSpend}
+                            trainCost={location.trainTravelCost.toFixed(2)}
                             carTime={location.dailyCarTime}
                             carCost={location.dailyCarSpend}
                             id={i}

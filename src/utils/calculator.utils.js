@@ -1,24 +1,44 @@
 import axios from 'axios'
 import {postcodeValidator} from 'postcode-validator'
+import { 
+    zoneOne, 
+    zoneTwo, 
+    zoneThree, 
+    zoneFour, 
+    zoneFive, 
+    zoneSix, 
+    zoneSeven, 
+    zoneEight, 
+    zoneNine
+} from './zones.data'
 
 import FormStore from '../stores/form.store'
 import ListStore from '../stores/list-store'
 import TravelStore from '../stores/travel.store'
+import { get } from 'mobx'
 
 export const getValueFormat = (index) => {
     if (FormStore.dailyTravelTime >= ListStore.myList[index].trainTravelTime) {
         ListStore.myList[index].lowerValue = true
         ListStore.myList[index].higherValue = false
     }
-    if (FormStore.dailyTravelTime < ListStore.myList[index].trainTravelTime) {
+    else if (FormStore.dailyTravelTime < ListStore.myList[index].trainTravelTime) {
         ListStore.myList[index].lowerValue = false
         ListStore.myList[index].higherValue = true
+    }
+    if (FormStore.dailyTravelSpend >= ListStore.myList[index].trainTravelCost) {
+        ListStore.myList[index].lowerCost = true
+        ListStore.myList[index].higherCost = false
+    }
+    else if (FormStore.dailyTravelSpend < ListStore.myList[index].trainTravelCost) {
+        ListStore.myList[index].lowerCost = false
+        ListStore.myList[index].higherCost = true
     }
 }
 
 export async function validatePostCode(postCode) {
     if (postcodeValidator(postCode, 'GB') === true) {
-        TravelStore.show = true
+        // TravelStore.show = true
     }
     else {
         alert(`The postcode: ${postCode} does not exist. Please enter a valid postcode`)
@@ -84,7 +104,7 @@ export async function getHomeLocation(){
 // }
 
 export const getTravelDetails = () => {
-    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&nationalSearch=true`)
+    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&mode=trains&nationalSearch=true`)
      .then(res => {
          console.log(res)
          TravelStore.journeyData = res.data.journeys
@@ -97,8 +117,176 @@ export const getTravelDetails = () => {
 }
 
 export const getFareInfo = () => {
-    axios.get('https://api.tfl.gov.uk/StopPoint/910GNWCRELL/FareTo/910GLNDNBDC')
+    axios.get('https://api.tfl.gov.uk/Stoppoint/490G01177G/FareTo/490G00012371')
     .then(res => {
         console.log(res)
     })
+}
+
+export const getHomeStopPoint = () => {
+    // axios.get(`https://api.tfl.gov.uk/StopPoint/Search/${TravelStore.journeyData[0].legs[0].arrivalPoint.commonName}?modesFilter=train&maxResults=10`)
+    // .then(res => console.log(res))
+}
+
+export const getHomeFareZone = (station) => {
+    if (zoneNine.find(zone => zone === station)){
+        console.log('zone 9')
+        TravelStore.homeFareZone = 9
+    }
+    else if (zoneEight.find(zone => zone === station)){
+        console.log('zone 8')
+        TravelStore.homeFareZone = 8
+    }
+    else if (zoneSeven.find(zone => zone === station)){
+        console.log('zone 7')
+        TravelStore.homeFareZone = 7
+    }
+    else if (zoneSix.find(zone => zone === station)){
+        console.log('zone 6')
+        TravelStore.homeFareZone = 6
+    }
+    else if (zoneFive.find(zone => zone === station)){
+        console.log('zone 5')
+        TravelStore.homeFareZone = 5
+    }
+    else if (zoneFour.find(zone => zone === station)){
+        console.log('zone 4')
+        TravelStore.homeFareZone = 4
+    }
+    else if (zoneThree.find(zone => zone === station)){
+        console.log('zone 3')
+        TravelStore.homeFareZone = 3
+    }
+    else if (zoneTwo.find(zone => zone === station)){
+        console.log('zone 2')
+        TravelStore.homeFareZone = 2
+    }
+    else if (zoneOne.find(zone => zone === station)){
+        console.log('zone 1')
+        TravelStore.homeFareZone = 1
+    }
+    else {
+        console.warn("Unable to find zone based on location")
+        TravelStore.homeFareZone = 0
+    } 
+}
+
+export const getDestinationFareZone = (station) => {
+    if (zoneNine.find(zone => zone === station)){
+        console.log('zone 9')
+        TravelStore.destinationFareZone = 9
+    }
+    else if (zoneEight.find(zone => zone === station)){
+        console.log('zone 8')
+        TravelStore.destinationFareZone = 8
+    }
+    else if (zoneSeven.find(zone => zone === station)){
+        console.log('zone 7')
+        TravelStore.destinationFareZone = 7
+    }
+    else if (zoneSix.find(zone => zone === station)){
+        console.log('zone 6')
+        TravelStore.destinationFareZone = 6
+    }
+    else if (zoneFive.find(zone => zone === station)){
+        console.log('zone 5')
+        TravelStore.destinationFareZone = 5
+    }
+    else if (zoneFour.find(zone => zone === station)){
+        console.log('zone 4')
+        TravelStore.destinationFareZone = 4
+    }
+    else if (zoneThree.find(zone => zone === station)){
+        console.log('zone 3')
+        TravelStore.destinationFareZone = 3
+    }
+    else if (zoneTwo.find(zone => zone === station)){
+        console.log('zone 2')
+        TravelStore.destinationFareZone = 2
+    }
+    else if (zoneOne.find(zone => zone === station)){
+        console.log('zone 1')
+        TravelStore.destinationFareZone = 1
+    }
+    else {
+        console.warn("Unable to find zone based on location")
+        TravelStore.destinationFareZone = 0
+    } 
+}
+
+export const getFarePrice = (zoneOne, zoneTwo) => {
+    if (zoneOne === 1 && zoneTwo === 9 ){
+        TravelStore.trainTravelCost = 24.80
+    }
+    else if (zoneOne === 1 && zoneTwo === 8){
+        TravelStore.trainTravelCost = 24.80
+    }
+    else if (zoneOne === 1 && zoneTwo === 7){
+        TravelStore.trainTravelCost = 24.80
+    }
+    else if (zoneOne === 1 && zoneTwo === 6){
+        TravelStore.trainTravelCost = 19.60
+    }
+    else if (zoneOne === 1 && zoneTwo === 5){
+        TravelStore.trainTravelCost = 19.60
+    }
+    else if (zoneOne === 1 && zoneTwo === 4){
+        TravelStore.trainTravelCost = 13.90
+    }
+    else if (zoneOne === 1 && zoneTwo === 3){
+        TravelStore.trainTravelCost = 13.90
+    }
+    else if (zoneOne === 1 && zoneTwo === 2){
+        TravelStore.trainTravelCost = 13.90
+    }
+    else if (zoneOne === 1 && zoneTwo === 1){
+        TravelStore.trainTravelCost = 13.90
+    }
+    else if (zoneOne === 2 && zoneTwo === 4){
+        TravelStore.trainTravelCost = 13.90
+    }
+    else if (zoneOne === 2 && zoneTwo === 3){
+        TravelStore.trainTravelCost = 13.90
+    }
+    else {
+        TravelStore.trainTravelCost = 9001
+    }
+
+}
+
+export const findNearestStation = () => {
+    let legs = TravelStore.journeyData[0].legs
+    let filteredArrivalPoint = legs.filter((currentElement) => {
+        return currentElement.arrivalPoint.commonName.includes('Station') === true
+    })
+    console.log(filteredArrivalPoint[0].arrivalPoint.commonName)
+    TravelStore.nearestHomeStation = filteredArrivalPoint[0].arrivalPoint.commonName
+
+    let filteredDeparturePoint = legs.filter((currentElement) => {
+        return currentElement.arrivalPoint.commonName.includes('Station') === true
+    })
+    console.log(filteredDeparturePoint[filteredDeparturePoint.length - 1].arrivalPoint.commonName)
+    TravelStore.nearestDestinationStation = filteredDeparturePoint[filteredDeparturePoint.length - 1].arrivalPoint.commonName
+}
+
+export const getAllTravelDetails = () => {
+    FormStore.loading = true
+    setTimeout(() => {
+        setTimeout(() => {
+            findNearestStation()
+        }, 100)
+        setTimeout(() => {
+            getHomeFareZone(TravelStore.nearestHomeStation)
+        }, 100)
+        setTimeout(() => {
+            getDestinationFareZone(TravelStore.nearestDestinationStation)
+        }, 100)
+        setTimeout(() => {
+            getFarePrice(TravelStore.destinationFareZone, TravelStore.homeFareZone)
+        }, 100)
+        setTimeout(() => {
+            FormStore.loading = false
+            TravelStore.show = true 
+        }, 100)
+    }, 4000)
 }

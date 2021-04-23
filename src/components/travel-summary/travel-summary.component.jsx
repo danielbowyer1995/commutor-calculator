@@ -10,11 +10,21 @@ const TravelSummary = (props) => {
         <div className='location-details'>
             <span className='option-bold'>Location: {props.location}</span>
             <span className='option' 
-                style={ListStore.myList[props.id].lowerValue ? {color:  "#13B000"} : null | ListStore.myList[props.id].higherValue ? {color:  "red"} : null}
+                
             >
-                Train travel time: {props.trainTime} mins
+                Train travel time: 
+                <span
+                    style={ListStore.myList[props.id].lowerValue ? {color:  "#5CD85A"} : null | ListStore.myList[props.id].higherValue ? {color:  "#DF362D"} : null}
+                > {props.trainTime} mins
+                </span>
             </span>
-            <span className='option'>Train travel cost: £{props.trainCost}</span>
+            <span className='option'>
+                Train travel cost:  
+                <span
+                    style={ListStore.myList[props.id].lowerCost ? {color:  "#5CD85A"} : null | ListStore.myList[props.id].higherCost ? {color:  "#DF362D"} : null}
+                > £{props.trainCost}
+                 </span>
+            </span>
             {/* <span className='option'>Car travel time: {props.carTime} mins</span>
             <span className='option'>Car travel cost: £{props.carCost}</span> */}
             {/* <button>Add to list</button> */}

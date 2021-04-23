@@ -11,7 +11,8 @@ import TravelStore from '../../stores/travel.store'
 import InputForm from '../../components/input-form/input-form.component'
 import TravelDetails from '../../components/travel-details/travel-details.component'
 import MyList from '../../components/my-list/my-list.component'
-import { getValueFormat } from '../../utils/calculator.utils'
+
+import { getValueFormat, getHomeStopPoint } from '../../utils/calculator.utils'
 
 
 
@@ -21,6 +22,7 @@ class Home extends Component {
     pushToMyList(location){
         action(ListStore.myList.push(clone(location)))
         getValueFormat(ListStore.myList.length - 1)
+        getHomeStopPoint()
     }
 
     render(){
@@ -36,7 +38,7 @@ class Home extends Component {
                             <TravelDetails
                             homeLocation={TravelStore.homeLocation}
                             trainTime={TravelStore.trainTravelTime}
-                            trainCost={0}
+                            trainCost={TravelStore.trainTravelCost.toFixed(2)}
                             carTime={0}
                             carCost={0}
                             />
@@ -61,7 +63,6 @@ class Home extends Component {
                             <MyList/>
                         </div>
                     }
-                    
                 </div>
             </div>
             

@@ -1,4 +1,5 @@
 .location-details {
+    position: relative;
     display: inline-grid;
     color: white;
 ;
@@ -13,6 +14,13 @@
         text-transform: uppercase;
         padding: 2px;
         margin-bottom: 10px;
-        color: #385E72;
+        color: #08313A;
     }
 }
+
+.loader {
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+}
+
