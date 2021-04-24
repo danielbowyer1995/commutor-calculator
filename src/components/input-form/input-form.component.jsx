@@ -26,9 +26,11 @@ class InputForm extends Component {
     }
 
     async handleSubmit(event) {
-        await getHomeLocation()
-        getTravelDetails()
         event.preventDefault();
+        await getHomeLocation()
+        // setTimeout(() => {
+        //     getTravelDetails()
+        // }, 1000) 
         validatePostCode(FormStore.destinationPostCode, 'GB')
         validatePostCode(FormStore.homePostCode, 'GB')
         getAllTravelDetails()

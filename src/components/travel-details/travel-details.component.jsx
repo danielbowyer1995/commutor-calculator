@@ -17,7 +17,7 @@ const TravelDetails = (props) => {
                 <div className='list-item'>
                     <div className='location-details'>
                         <h3 className='option-bold' style={!FormStore.loading ? null : {opacity: .1}} >
-                            Location: {props.homeLocation}
+                            {props.homeLocation}
                         </h3>
                         <span className='option' style={!FormStore.loading ? null : {opacity: .1}} >
                             Train travel time: {props.trainTime} mins

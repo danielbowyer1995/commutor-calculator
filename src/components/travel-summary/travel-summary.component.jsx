@@ -8,7 +8,7 @@ import ListStore from '../../stores/list-store'
 const TravelSummary = (props) => {
     return(
         <div className='location-details'>
-            <span className='option-bold'>Location: {props.location}</span>
+            <span className='option-bold'>{props.location}</span>
             <span className='option' 
                 
             >

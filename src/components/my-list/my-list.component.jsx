@@ -23,7 +23,9 @@ class MyList extends Component {
                             carCost={location.dailyCarSpend}
                             id={i}
                         />
-                        <span className='cross' onClick={() => ListStore.myList.splice(i,1)}>&#215;</span>
+                        <div className='container-cross'>
+                            <span className='cross' onClick={() => ListStore.myList.splice(i,1)}>&#215;</span>
+                        </div>
                     </div>
                 )}
             </div>

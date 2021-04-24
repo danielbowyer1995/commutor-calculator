@@ -13,6 +13,8 @@ import TravelDetails from '../../components/travel-details/travel-details.compon
 import MyList from '../../components/my-list/my-list.component'
 
 import { getValueFormat, getHomeStopPoint } from '../../utils/calculator.utils'
+import Loader from '../../components/loader/loader.component'
+import FormStore from '../../stores/form.store'
 
 
 
@@ -32,6 +34,13 @@ class Home extends Component {
                     <div className='your-details'>
                         <h2>YOUR DETAILS</h2>
                         <InputForm />
+                        {
+                            TravelStore.show || !FormStore.loading ? null
+                            :
+                            <div>
+                                <Loader />
+                            </div>
+                        }
                         {
                             !TravelStore.journeyData.length ? null 
                             :

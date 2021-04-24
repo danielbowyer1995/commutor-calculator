@@ -1,7 +1,7 @@
 
 .list-item-container{
     overflow: auto;
-    height: 650px
+    height: 650px;
 }
 
 .list-item {
@@ -9,16 +9,34 @@
     background-color: #107869;
     margin: 10px;
     padding: 16px;
-}
-
-.cross {
-    position: absolute;
-    padding-left: 20px;
-    font-size: xx-large;
-    color: #385E72;
+    transition: transform .3s;
 
     &:hover {
-        cursor: pointer;
-        color: red;
-    }    
+        cursor: move;
+        transform: scale(1.03);
+    }
 }
+
+.container-cross {
+    position: relative;
+    display: grid;
+    justify-items: right;
+    top: auto;
+    top: -120px;
+    right: -10px;
+
+    .cross {
+        position: absolute;
+        font-size: xx-large;
+        color: #385E72;
+        transition: transform .2s;
+    
+        &:hover {
+            transform: scale(1.3);
+            cursor: pointer;
+            color: #DF362D;
+        }    
+    }
+}
+
+

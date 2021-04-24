@@ -104,7 +104,7 @@ export async function getHomeLocation(){
 // }
 
 export const getTravelDetails = () => {
-    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&mode=walking,train&nationalSearch=true`)
+    axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${FormStore.homePostCode}/to/${FormStore.destinationPostCode}&mode=walking,train,nation-rail&nationalSearch=true`)
      .then(res => {
          console.log(res)
          TravelStore.journeyData = res.data.journeys
@@ -242,10 +242,10 @@ export const getFarePrice = (zoneOne, zoneTwo) => {
     else if (zoneOne === 1 && zoneTwo === 1){
         TravelStore.trainTravelCost = 13.90
     }
-    else if (zoneOne === 2 && zoneTwo === 4){
+    else if (zoneOne === 2 && zoneTwo === 3){
         TravelStore.trainTravelCost = 13.90
     }
-    else if (zoneOne === 2 && zoneTwo === 3){
+    else if (zoneOne === 2 && zoneTwo === 4){
         TravelStore.trainTravelCost = 13.90
     }
     else {
@@ -257,7 +257,7 @@ export const getFarePrice = (zoneOne, zoneTwo) => {
 }
 
 export const findNearestStation = () => {
-    let legs = TravelStore.journeyData[0].legs
+    let legs = TravelStore.journeyData[TravelStore.journeyData.length - 2].legs
     let filteredArrivalPoint = legs.filter((currentElement) => {
         return currentElement.mode.id === 'national-rail'
     })
@@ -275,20 +275,23 @@ export const getAllTravelDetails = () => {
     FormStore.loading = true
     setTimeout(() => {
         setTimeout(() => {
+            getTravelDetails()
+        },2000)
+        setTimeout(() => {
             findNearestStation()
-        }, 100)
+        }, 3500)
         setTimeout(() => {
             getHomeFareZone(TravelStore.nearestHomeStation)
-        }, 200)
+        }, 3600)
         setTimeout(() => {
             getDestinationFareZone(TravelStore.nearestDestinationStation)
-        }, 300)
+        }, 3700)
         setTimeout(() => {
             getFarePrice(TravelStore.homeFareZone, TravelStore.destinationFareZone)
-        }, 400)
+        }, 3800)
         setTimeout(() => {
             FormStore.loading = false
             TravelStore.show = true 
-        }, 500)
+        }, 3900)
     }, 4000)
 }
