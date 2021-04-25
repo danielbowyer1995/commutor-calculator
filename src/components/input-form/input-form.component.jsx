@@ -6,7 +6,6 @@ import FormStore from '../../stores/form.store'
 
 import { validatePostCode, 
     getHomeLocation, 
-    getTravelDetails,
     getAllTravelDetails,
     // getHomeFareZone,
     // getFarePrice,
@@ -49,7 +48,7 @@ class InputForm extends Component {
                     </label>
                     <input
                         className='input-number' 
-                        type='number' 
+                        type='number'
                         name='dailyTravelSpend'
                         autoComplete='off'
                         value={this.input}

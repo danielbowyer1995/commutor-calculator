@@ -15,7 +15,6 @@ import {
 import FormStore from '../stores/form.store'
 import ListStore from '../stores/list-store'
 import TravelStore from '../stores/travel.store'
-import { get } from 'mobx'
 
 export const getValueFormat = (index) => {
     if (FormStore.dailyTravelTime >= ListStore.myList[index].trainTravelTime) {
@@ -38,7 +37,6 @@ export const getValueFormat = (index) => {
 
 export async function validatePostCode(postCode) {
     if (postcodeValidator(postCode, 'GB') === true) {
-        // TravelStore.show = true
     }
     else {
         alert(`The postcode: ${postCode} does not exist. Please enter a valid postcode`)
