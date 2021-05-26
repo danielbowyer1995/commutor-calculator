@@ -8,12 +8,10 @@ import './travel-details.styles.scss'
 
 const TravelDetails = (props) => {
     return(
-        
+
         <div className='travel-list-item'>
             {/* add If component conditional in here */}
-            {
-                !TravelStore.show ? null
-                :
+            <If condition={TravelStore.show}>
                 <div className='list-item'>
                     <div className='location-details'>
                         <h3 className='option-bold' style={!FormStore.loading ? null : {opacity: .1}} >
@@ -26,13 +24,13 @@ const TravelDetails = (props) => {
                             Train travel cost: £{props.trainCost}
                         </span>
                         <div className='loader '>
-                            {
-                                !FormStore.loading ? null : <Loader></Loader>
-                            }
+                            <If condition={FormStore.loading}>
+                                <Loader />
+                            </If>
                         </div>
                     </div>
                 </div>
-            }
+            </If>
         </div>
     )
 }
@@ -54,7 +52,7 @@ const TravelDetails = (props) => {
 //     render(){
 //         return(
 //             <div className='location-details'>
-//                 
+//
 //             </div>
 //         )
 //     }
