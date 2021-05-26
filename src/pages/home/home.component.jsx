@@ -3,18 +3,18 @@ import { observer } from 'mobx-react'
 import { action } from 'mobx'
 import clone from 'lodash/cloneDeep'
 
+import ListStore from 'stores/list-store'
+import TravelStore from 'stores/travel.store'
+import FormStore from 'stores/form.store'
+
+import InputForm from 'components/input-form/input-form.component'
+import TravelDetails from 'components/travel-details/travel-details.component'
+import MyList from 'components/my-list/my-list.component'
+import Loader from 'components/loader/loader.component'
+
+import { getValueFormat, getHomeStopPoint } from 'utils/calculator.utils'
+
 import './home.styles.scss'
-
-import ListStore from '../../stores/list-store'
-import TravelStore from '../../stores/travel.store'
-
-import InputForm from '../../components/input-form/input-form.component'
-import TravelDetails from '../../components/travel-details/travel-details.component'
-import MyList from '../../components/my-list/my-list.component'
-
-import { getValueFormat, getHomeStopPoint } from '../../utils/calculator.utils'
-import Loader from '../../components/loader/loader.component'
-import FormStore from '../../stores/form.store'
 
 class Home extends Component {
   pushToMyList(location) {

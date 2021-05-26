@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { postcodeValidator } from 'postcode-validator'
-import { zoneOne, zoneTwo, zoneThree, zoneFour, zoneFive, zoneSix, zoneSeven, zoneEight, zoneNine } from './zones.data'
 
-import FormStore from '../stores/form.store'
-import ListStore from '../stores/list-store'
-import TravelStore from '../stores/travel.store'
+import FormStore from 'stores/form.store'
+import ListStore from 'stores/list-store'
+import TravelStore from 'stores/travel.store'
+
+import { zoneOne, zoneTwo, zoneThree, zoneFour, zoneFive, zoneSix, zoneSeven, zoneEight, zoneNine } from './zones.data'
 
 export const getValueFormat = (index) => {
   if (FormStore.dailyTravelTime >= ListStore.myList[index].trainTravelTime) {

@@ -1,11 +1,10 @@
 import { observer } from 'mobx-react'
 import React, { Component } from 'react'
 
-import './my-list.styles.scss'
-
 import ListStore from 'stores/list-store'
+import TravelSummary from 'components/travel-summary/travel-summary.component'
 
-import TravelSummary from '../travel-summary/travel-summary.component'
+import './my-list.styles.scss'
 
 class MyList extends Component {
   render() {

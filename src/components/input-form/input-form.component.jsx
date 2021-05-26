@@ -3,16 +3,7 @@ import { action } from 'mobx'
 import React, { Component } from 'react'
 
 import FormStore from 'stores/form.store'
-
-import {
-  validatePostCode,
-  getHomeLocation,
-  getAllTravelDetails,
-  // getHomeFareZone,
-  // getFarePrice,
-  // getDestinationFareZone,
-  // findNearestStation,
-} from 'utils/calculator.utils'
+import { validatePostCode, getHomeLocation, getAllTravelDetails } from 'utils/calculator.utils'
 
 import './input-form.styles.scss'
 

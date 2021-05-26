@@ -1,9 +1,9 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 
-import './travel-summary.styles.scss'
-
 import ListStore from 'stores/list-store'
+
+import './travel-summary.styles.scss'
 
 const TravelSummary = (props) => {
   return (
