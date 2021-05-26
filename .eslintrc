@@ -3,5 +3,10 @@
   "rules": {
     "react/jsx-no-undef": 0,
     "indent": ["warn", 2]
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
   }
 }

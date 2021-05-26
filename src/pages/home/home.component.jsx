@@ -16,7 +16,8 @@ import { getValueFormat, getHomeStopPoint } from 'utils/calculator.utils'
 
 import './home.styles.scss'
 
-class Home extends Component {
+@observer
+export default class Home extends Component {
   pushToMyList(location) {
     action(ListStore.myList.push(clone(location)))
     getValueFormat(ListStore.myList.length - 1)
@@ -62,5 +63,3 @@ class Home extends Component {
     )
   }
 }
-
-export default observer(Home)
