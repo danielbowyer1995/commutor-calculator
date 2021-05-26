@@ -3,9 +3,10 @@ import React, { Component } from 'react'
 
 import './my-list.styles.scss'
 
-import ListStore from '../../stores/list-store'
+import ListStore from 'stores/list-store'
 
 import TravelSummary from '../travel-summary/travel-summary.component'
+
 class MyList extends Component {
   render() {
     console.log(ListStore.myList)

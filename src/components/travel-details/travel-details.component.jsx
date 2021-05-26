@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react'
 import React from 'react'
-import FormStore from '../../stores/form.store'
-import TravelStore from '../../stores/travel.store'
-import Loader from '../../components/loader/loader.component'
+
+import FormStore from 'stores/form.store'
+import TravelStore from 'stores/travel.store'
+import Loader from 'components/loader/loader.component'
 
 import './travel-details.styles.scss'
 

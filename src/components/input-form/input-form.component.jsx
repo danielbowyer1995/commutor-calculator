@@ -2,7 +2,7 @@ import { observer } from 'mobx-react'
 import { action } from 'mobx'
 import React, { Component } from 'react'
 
-import FormStore from '../../stores/form.store'
+import FormStore from 'stores/form.store'
 
 import {
   validatePostCode,
@@ -12,7 +12,7 @@ import {
   // getFarePrice,
   // getDestinationFareZone,
   // findNearestStation,
-} from '../../utils/calculator.utils'
+} from 'utils/calculator.utils'
 
 import './input-form.styles.scss'
 
