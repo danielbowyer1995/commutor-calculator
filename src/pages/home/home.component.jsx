@@ -30,12 +30,12 @@ class Home extends Component {
           <div className="your-details">
             <h2>YOUR DETAILS</h2>
             <InputForm />
-            {TravelStore.show || !FormStore.loading ? null : (
+            <If condition={!TravelStore.show && FormStore.loading}>
               <div>
                 <Loader />
               </div>
-            )}
-            {!TravelStore.journeyData.length ? null : (
+            </If>
+            <If condition={TravelStore.journeyData.length}>
               <TravelDetails
                 homeLocation={TravelStore.homeLocation}
                 trainTime={TravelStore.trainTravelTime}
@@ -43,14 +43,13 @@ class Home extends Component {
                 carTime={0}
                 carCost={0}
               />
-            )}
-
+            </If>
             {/* eslint-disable-next-line */}
-            {!TravelStore.show ? null : (
+            <If condition={TravelStore.show}>
               <button className="add-to-list-button" onClick={action(() => this.pushToMyList(TravelStore))}>
                 ADD TO MY LIST
               </button>
-            )}
+            </If>
           </div>
           {ListStore.myList.length <= 0 ? null : (
             <div className="my-list">
