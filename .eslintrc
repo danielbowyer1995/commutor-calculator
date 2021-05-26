@@ -1,9 +1,7 @@
 {
-  "extends": [
-    "react-app",
-    "react-app/jest"
-  ],
+  "extends": ["react-app", "react-app/jest"],
   "rules": {
-    "react/jsx-no-undef": 0
+    "react/jsx-no-undef": 0,
+    "indent": ["error", 2]
   }
 }
