@@ -14,7 +14,7 @@ import Loader from 'components/loader/loader.component'
 
 import { getValueFormat, getHomeStopPoint } from 'utils/calculator.utils'
 
-import './home.styles.scss'
+import * as Styled from './home.styled'
 
 @observer
 export default class Home extends Component {
@@ -26,40 +26,38 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
-        <div className="home-grid">
-          <div className="your-details">
-            <h2>YOUR DETAILS</h2>
-            <InputForm />
-            <If condition={!TravelStore.show && FormStore.loading}>
-              <div>
-                <Loader />
-              </div>
-            </If>
-            <If condition={TravelStore.journeyData.length}>
-              <TravelDetails
-                homeLocation={TravelStore.homeLocation}
-                trainTime={TravelStore.trainTravelTime}
-                trainCost={TravelStore.trainTravelCost.toFixed(2)}
-                carTime={0}
-                carCost={0}
-              />
-            </If>
-            {/* eslint-disable-next-line */}
-            <If condition={TravelStore.show}>
-              <button className="add-to-list-button" onClick={action(() => this.pushToMyList(TravelStore))}>
-                ADD TO MY LIST
-              </button>
-            </If>
-          </div>
-          {ListStore.myList.length <= 0 ? null : (
-            <div className="my-list">
-              <h2>MY LIST</h2>
-              <MyList />
+      <Styled.HomeContainer>
+        <Styled.Details>
+          <h2>YOUR DETAILS</h2>
+          <InputForm />
+          <If condition={!TravelStore.show && FormStore.loading}>
+            <div>
+              <Loader />
             </div>
-          )}
-        </div>
-      </div>
+          </If>
+          <If condition={TravelStore.journeyData.length}>
+            <TravelDetails
+              homeLocation={TravelStore.homeLocation}
+              trainTime={TravelStore.trainTravelTime}
+              trainCost={TravelStore.trainTravelCost.toFixed(2)}
+              carTime={0}
+              carCost={0}
+            />
+          </If>
+          {/* eslint-disable-next-line */}
+          <If condition={TravelStore.show}>
+            <Styled.ButtonAddList className="add-to-list-button" onClick={action(() => this.pushToMyList(TravelStore))}>
+              ADD TO MY LIST
+            </Styled.ButtonAddList>
+          </If>
+        </Styled.Details>
+        {ListStore.myList.length <= 0 ? null : (
+          <Styled.MyList>
+            <h2>MY LIST</h2>
+            <MyList />
+          </Styled.MyList>
+        )}
+      </Styled.HomeContainer>
     )
   }
 }

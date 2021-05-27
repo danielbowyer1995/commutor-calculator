@@ -15,6 +15,12 @@ module.exports = override(
       },
     ],
     '@babel/plugin-proposal-optional-chaining',
+    [
+      'babel-plugin-styled-components',
+      {
+        displayName: false,
+      },
+    ],
     'jsx-control-statements',
   ),
 )
