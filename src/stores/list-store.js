@@ -1,7 +1,7 @@
 import { observable } from 'mobx'
 
 const ListStore = observable({
-    myList: [],
+  myList: [],
 })
 
 export default ListStore

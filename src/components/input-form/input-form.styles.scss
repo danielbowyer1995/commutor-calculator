@@ -1,130 +1,125 @@
 .input-form {
-    align-items: center;
+  align-items: center;
 }
 
 .form-fields {
-    display: grid;
-    margin: 10px;
-    padding: 2px;
-    background-color: #107869;
-    color: white;
-    // font-family: 'Lato', sans-serif;
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover, 
-    input:-webkit-autofill:focus, 
-    input:-webkit-autofill:active
-    {
-     -webkit-box-shadow: 0 0 0 30px #107869 inset !important;
-     -webkit-text-fill-color: white !important;
-    }
+  display: grid;
+  margin: 10px;
+  padding: 2px;
+  background-color: #107869;
+  color: white;
+  // font-family: 'Lato', sans-serif;
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #107869 inset !important;
+    -webkit-text-fill-color: white !important;
+  }
 
-
-    .input-number {
-        justify-self: center;
-        width: 100px;
-        height: 25px;
-        border: solid;
-        border-color: #08313A;
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        background-color: #107869;
-        padding-left: 10px;
-        text-align: center;
-        font-family: 'Lato', sans-serif;
-        color: white;
-        transition: border-color .5s;
-
-        &:focus {
-            outline: 0;
-            border-color: white;
-        }
-    }
-
-    .content-label-money {
-        display: flex;
-        position: absolute;
-    }
-
-    .input-text {
-        justify-self: center;
-        width: 100px;
-        height: 25px;
-        border: solid;
-        border-color: #08313A;
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        background-color: #107869;
-        padding-left: 10px;
-        text-align: center;
-        font-family: 'Lato', sans-serif;
-        color: white;
-        transition: border-color 1s;
-
-        &:focus {
-            outline: 0;
-            border-color: white;
-        }
-
-
-    }
-}
-
-label{
-    margin: 10px;
-}
-
-
-button { 
+  .input-number {
     justify-self: center;
-    width: 200px;
-    height: 35px;
-    padding: 2px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    border: none;
-    border-radius: 25px;
-    background-color: #08313A;
+    width: 100px;
+    height: 25px;
+    border: solid;
+    border-color: #08313a;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    background-color: #107869;
+    padding-left: 10px;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
     color: white;
-    text-decoration: none;
-    font-size: 16px;
-
-    &:hover {
-        cursor: pointer;
-    }
+    transition: border-color 0.5s;
 
     &:focus {
-        outline: 0;
+      outline: 0;
+      border-color: white;
     }
+  }
+
+  .content-label-money {
+    display: flex;
+    position: absolute;
+  }
+
+  .input-text {
+    justify-self: center;
+    width: 100px;
+    height: 25px;
+    border: solid;
+    border-color: #08313a;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    background-color: #107869;
+    padding-left: 10px;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    transition: border-color 1s;
+
+    &:focus {
+      outline: 0;
+      border-color: white;
+    }
+  }
 }
 
-select{
-    padding: 2px;
-    margin-left: 10px;
+label {
+  margin: 10px;
+}
+
+button {
+  justify-self: center;
+  width: 200px;
+  height: 35px;
+  padding: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  border: none;
+  border-radius: 25px;
+  background-color: #08313a;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+select {
+  padding: 2px;
+  margin-left: 10px;
 }
 
 .submit-button {
-    width: 150px;
-    height: 50px;
-    padding: 16px;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    justify-self: center;
+  width: 150px;
+  height: 50px;
+  padding: 16px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  justify-self: center;
 
-    border: none;
-    border-radius: 25px;
-    background-color: #5CD85A !important;
-    font-size: 15px;
-    font-weight: 500;
-    color: white;
+  border: none;
+  border-radius: 25px;
+  background-color: #5cd85a !important;
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
 
-    &:hover {
-        cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 
-    &:focus {
-        outline: 0;
-    }
+  &:focus {
+    outline: 0;
+  }
 }

@@ -1,26 +1,23 @@
 .location-details {
-    position: relative;
-    display: inline-grid;
-    color: white;
-;
+  position: relative;
+  display: inline-grid;
+  color: white;
+  .option {
+    padding: 2px;
+    margin-bottom: 10px;
+  }
 
-    .option{
-        padding: 2px;
-        margin-bottom: 10px;
-    }
-
-    .option-bold{
-        font-weight: bold;
-        text-transform: uppercase;
-        padding: 2px;
-        margin-bottom: 10px;
-        color: #08313A;
-    }
+  .option-bold {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 2px;
+    margin-bottom: 10px;
+    color: #08313a;
+  }
 }
 
 .loader {
-    position: absolute;
-    justify-self: center;
-    align-self: center;
+  position: absolute;
+  justify-self: center;
+  align-self: center;
 }
-
